@@ -1,23 +1,19 @@
 # Sample Markdown
 
-This is a sample markdown file to test the plugin `remark-simple-plantuml`.
+This is a sample markdown file to test the plugin `remark-local-plantuml`.
 
-If the code blocks like following are contained, it should be converted to a Image node.
+If the code blocks like following are contained, it should be converted to an inline svg.
 
 ```plantuml
-hide empty member
-
-class RemarkSimplePlantUML {
-    + transform(node: AST): AST
-}
+class A
+class B
+A <-- B
 ```
 
 ```plantuml Title should be displayed
-hide empty member
-
-interface Transformer {
-    + transform(node: AST): AST
-}
+class A
+class B
+A <-- B
 ```
 
 ```javascript

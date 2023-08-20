@@ -30,7 +30,7 @@
     "mocha": "^10.2.0",
     "nyc": "^15.0.0",
     "prettier": "^1.19.1",
-    "remark": "^14.0.3"
+    "remark": "^11.0.2"
   },
   "dependencies": {
     "node-plantuml": "^0.9.0",

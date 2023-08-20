@@ -5,26 +5,17 @@ const remark = require("remark");
 const plugin = require("../index");
 
 describe("Plugin", () => {
-  it("should convert PlantUML code to Image nodes", () => {
+  it("should convert PlantUML code to Image nodes", async () => {
     const input = fs.readFileSync(path.resolve(__dirname, "./resources/source.md")).toString();
     const expected = fs.readFileSync(path.resolve(__dirname, "./resources/expected.md")).toString();
 
-    const output = remark()
+    const promise = remark()
       .use(plugin)
-      .processSync(input)
-      .toString();
+      .process(input);
 
-    chai.assert.equal(output, sanitized(expected));
-  });
+    const result = await promise;
 
-  it("should convert PlantUML code to the Image nodes which endpoint specified", () => {
-    const input = fs.readFileSync(path.resolve(__dirname, "./resources/source.md")).toString();
-    const expected = fs.readFileSync(path.resolve(__dirname, "./resources/expected.svg.md")).toString();
-
-    const output = remark()
-      .use(plugin, { baseUrl: "https://www.plantuml.com/plantuml/svg/" })
-      .processSync(input)
-      .toString();
+    const output = result.toString();
 
     chai.assert.equal(output, sanitized(expected));
   });
