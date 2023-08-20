@@ -1,5 +1,5 @@
-//const plantuml = require("node-plantuml");
-//const plantumlGenerator = plantuml.generate({ format: "svg" });
+const visit = require("unist-util-visit");
+const plantuml = require("node-plantuml");
 
 /**
  * Plugin for remark-js
@@ -8,32 +8,38 @@
  * https://github.com/unifiedjs/unified#plugin
  */
 function remarkSimplePlantumlPlugin() {
-  return async syntaxTree => {
-    for (let i = 0; i < syntaxTree.children.length; i++) {
-      let node = syntaxTree.children[i];
-      let { lang, value, alt } = node;
-      if (!lang || !value || lang !== "plantuml") return;
+  return async function transformer(syntaxTree) {
+    const nodes = [];
+    visit(syntaxTree, "code", node => {
+      let { lang, value } = node;
+      if (lang && value && lang === "plantuml") {
+        nodes.push(node);
+      }
+    });
 
-      /*
+    let promises = [];
+    for (const node of nodes) {
+      let { value, alt } = node;
       let svgString = "";
-      plantumlGenerator.in = value;
+      const plantumlGenerator = plantuml.generate(value, { format: "svg" });
 
-      await new Promise(resolve => {
+      let promise = new Promise(resolve => {
         plantumlGenerator.out.on("data", data => {
           svgString += data.toString("utf8");
         });
 
         plantumlGenerator.out.on("end", () => {
+          node.type = "html";
+          node.value = `<div class="plantuml-diagram">${svgString}</div>`;
+          node.alt = alt;
+          node.meat = undefined;
           resolve();
         });
       });
-      */
-      let svgString = "heodhandao";
-      node.type = "html";
-      node.value = `<div class="plantuml-diagram">${svgString}</div>`;
-      node.alt = alt;
-      node.meat = undefined;
+      promises.push(promise);
     }
+
+    await Promise.all(promises);
   };
 }
 
