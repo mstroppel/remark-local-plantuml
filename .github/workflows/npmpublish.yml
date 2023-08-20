@@ -14,10 +14,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: $NODE_VERSION
+          node-version: ${{env.NODE_VERSION}}
       - run: npm ci
       - run: npm run lint
-      - run: npm coverage
+      - run: npm run coverage
 
   publish-npm:
     needs: build
@@ -26,7 +26,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: $NODE_VERSION
+          node-version: ${{env.NODE_VERSION}}
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm publish --access public

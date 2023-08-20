@@ -20,4 +20,4 @@ jobs:
           node-version: ${{env.NODE_VERSION}}
       - run: npm ci
       - run: npm run lint
-      - run: npm coverage
+      - run: npm run coverage
