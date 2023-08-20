@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "coverage": "nyc npm run test",
-    "lint": "eslint --fix ./index.js"
+    "lint": "eslint ./index.js",
+    "lint-fix": "eslint --fix ./index.js"
   },
   "repository": {
     "type": "git",
