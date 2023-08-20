@@ -9,12 +9,9 @@ describe("Plugin", () => {
     const input = fs.readFileSync(path.resolve(__dirname, "./resources/source.md")).toString();
     const expected = fs.readFileSync(path.resolve(__dirname, "./resources/expected.md")).toString();
 
-    const promise = remark()
+    const result = await remark()
       .use(plugin)
       .process(input);
-
-    const result = await promise;
-
     const output = result.toString();
 
     chai.assert.equal(output, sanitized(expected));
