@@ -5,7 +5,7 @@ on:
     types: [created]
 
 env:
-  NODE_VERSION: 18
+  NODE_VERSION: 18.x
 
 jobs:
   build:
@@ -16,11 +16,12 @@ jobs:
         with:
           node-version: $NODE_VERSION
       - run: npm ci
-      - run: npm test
+      - run: npm run lint
+      - run: npm coverage
 
   publish-npm:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
