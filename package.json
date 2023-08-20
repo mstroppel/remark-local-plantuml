@@ -1,0 +1,42 @@
+{
+  "name": "@mstroppel/remark-local-plantuml",
+  "version": "0.0.1",
+  "description": "`remark-local-plantuml` is a simple plugin for [remarkjs](https://github.com/remarkjs/remark) that converts PlantUML code written in Markdown to inline image.",
+  "main": "./index.js",
+  "scripts": {
+    "test": "mocha",
+    "coverage": "nyc npm run test",
+    "lint": "eslint --fix ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mstroppel/remark-local-plantuml.git"
+  },
+  "author": "mstroppel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mstroppel/remark-local-plantuml/issues"
+  },
+  "homepage": "https://github.com/mstroppel/remark-local-plantuml#readme",
+  "keywords": [
+    "remark",
+    "plantuml"
+  ],
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0",
+    "prettier": "^1.19.1",
+    "remark": "^11.0.2"
+  },
+  "dependencies": {
+    "plantuml-encoder": "^1.4.0",
+    "unist-util-visit": "^2.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
