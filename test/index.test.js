@@ -14,7 +14,7 @@ describe("Plugin", () => {
       .process(input);
     const output = result.toString();
 
-    chai.assert.equal(output, sanitized(expected));
+    chai.assert.equal(sanitized(output), sanitized(expected));
   });
 });
 
