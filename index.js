@@ -1,5 +1,5 @@
-const visit = require("unist-util-visit");
-const plantuml = require("node-plantuml");
+import visit from "unist-util-visit";
+import plantuml from "node-plantuml";
 
 /**
  * Plugin for remark-js
