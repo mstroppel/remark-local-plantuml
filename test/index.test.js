@@ -1,8 +1,13 @@
-const chai = require("chai");
-const fs = require("fs");
-const path = require("path");
-const remark = require("remark");
-const plugin = require("../index");
+import chai from "chai";
+import fs from "fs";
+import path from "path";
+import remark from "remark";
+import plugin from "../index.js";
+
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 describe("Plugin", () => {
   it("should convert PlantUML code to Image nodes", async () => {
@@ -13,7 +18,8 @@ describe("Plugin", () => {
       .use(plugin)
       .process(input);
     const output = result.toString();
-
+    //fs.writeFileSync(path.resolve(__dirname, "./resources/actual.md"), output);
+    
     chai.assert.equal(sanitized(output), sanitized(expected));
   });
 });

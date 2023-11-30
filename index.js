@@ -7,7 +7,7 @@ import plantuml from "node-plantuml";
  * See details about plugin API:
  * https://github.com/unifiedjs/unified#plugin
  */
-function remarkSimplePlantumlPlugin() {
+function remarkLocalPlantumlPlugin() {
   return async function transformer(syntaxTree) {
     const nodes = [];
     visit(syntaxTree, "code", node => {
@@ -43,4 +43,4 @@ function remarkSimplePlantumlPlugin() {
   };
 }
 
-module.exports = remarkSimplePlantumlPlugin;
+export default remarkLocalPlantumlPlugin;
