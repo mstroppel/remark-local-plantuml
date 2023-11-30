@@ -18,7 +18,7 @@ describe("Plugin", () => {
       .use(plugin)
       .process(input);
     const output = result.toString();
-    fs.writeFileSync(path.resolve(__dirname, "./resources/actual.md"), output);
+    //fs.writeFileSync(path.resolve(__dirname, "./resources/actual.md"), output);
     
     chai.assert.equal(sanitized(output), sanitized(expected));
   });
