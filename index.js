@@ -1,6 +1,5 @@
 import visit from "unist-util-visit";
 import plantuml from "node-plantuml";
-import { transform } from "@svgr/core";
 
 /**
  * Plugin for remark-js
