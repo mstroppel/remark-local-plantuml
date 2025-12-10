@@ -10,7 +10,7 @@ import plantuml from "node-plantuml-back";
 function remarkLocalPlantumlPlugin() {
   return async function transformer(syntaxTree) {
     const nodes = [];
-    visit(syntaxTree, "code", node => {
+    visit(syntaxTree, "code", (node) => {
       let { lang, value } = node;
       if (lang && value && lang === "plantuml") {
         nodes.push(node);
@@ -23,8 +23,8 @@ function remarkLocalPlantumlPlugin() {
       let svgString = "";
       const plantumlGenerator = plantuml.generate(value, { format: "svg" });
 
-      let promise = new Promise(resolve => {
-        plantumlGenerator.out.on("data", data => {
+      let promise = new Promise((resolve) => {
+        plantumlGenerator.out.on("data", (data) => {
           svgString += data.toString("utf8");
         });
 

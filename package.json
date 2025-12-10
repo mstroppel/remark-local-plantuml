@@ -29,13 +29,13 @@
     "@eslint/js": "^9.39.1",
     "chai": "^4.2.0",
     "eslint": "^9.39.1",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
     "globals": "^16.5.0",
     "mocha": "^10.2.0",
     "nyc": "^17.1.0",
-    "prettier": "^1.19.1",
-    "remark": "^15.0.1"
+    "prettier": "^3.7.4",
+    "remark": "^11.0.2"
   },
   "dependencies": {
     "node-plantuml-back": "^1.1.4",
