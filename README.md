@@ -95,7 +95,12 @@ Add the following to the top of `docusaurus.config.js` file:
 const localPlantUML = require("@mstroppel/remark-local-plantuml");
 import rehypeRaw from 'rehype-raw';
 const rehypeRawOptions = {
-  passThrough: ['mdxjsEsm']
+  passThrough: [
+    'mdxjsEsm',
+    'mdxJsxFlowElement',
+    'mdxJsxTextElement',
+    'mdxTextExpression',
+  ],
 };
 
 // your configurations...
