@@ -25,10 +25,13 @@
     "plantuml"
   ],
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.1",
     "chai": "^4.2.0",
-    "eslint": "^6.8.0",
+    "eslint": "^9.39.1",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
+    "globals": "^16.5.0",
     "mocha": "^10.2.0",
     "nyc": "^15.0.0",
     "prettier": "^1.19.1",
