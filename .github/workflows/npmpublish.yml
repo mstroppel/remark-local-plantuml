@@ -4,6 +4,10 @@ on:
   release:
     types: [created]
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
   NODE_VERSION: 18.x
 
@@ -28,6 +32,4 @@ jobs:
           node-version: ${{env.NODE_VERSION}}
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: npm publish
