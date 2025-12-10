@@ -1,6 +1,6 @@
 {
   "name": "@mstroppel/remark-local-plantuml",
-  "version": "0.0.2",
+  "version": "0.1.0-beta.0",
   "description": "`remark-local-plantuml` is a simple plugin for [remarkjs](https://github.com/remarkjs/remark) that converts PlantUML code written in Markdown to inline image.",
   "type": "module",
   "exports": "./index.js",
