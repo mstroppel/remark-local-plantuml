@@ -1,5 +1,5 @@
 import visit from "unist-util-visit";
-import plantuml from "node-plantuml";
+import plantuml from "node-plantuml-back";
 
 /**
  * Plugin for remark-js
