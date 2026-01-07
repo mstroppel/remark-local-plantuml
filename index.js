@@ -17,29 +17,34 @@ function remarkLocalPlantumlPlugin() {
       }
     });
 
-    let promises = [];
-    for (const node of nodes) {
-      let { value, alt } = node;
-      let svgString = "";
-      const plantumlGenerator = plantuml.generate(value, { format: "svg" });
+    const batchSize = 4;
+    for (let i = 0; i < nodes.length; i += batchSize) {
+      const batch = nodes.slice(i, i + batchSize);
+      const promises = [];
 
-      let promise = new Promise((resolve) => {
-        plantumlGenerator.out.on("data", (data) => {
-          svgString += data.toString("utf8");
-        });
+      for (const node of batch) {
+        let { value, alt } = node;
+        let svgString = "";
+        const plantumlGenerator = plantuml.generate(value, { format: "svg" });
 
-        plantumlGenerator.out.on("end", () => {
-          node.type = "html";
-          node.value = `<div class="plantuml-diagram">${svgString}</div>`;
-          node.alt = alt;
-          node.meat = undefined;
-          resolve();
+        let promise = new Promise((resolve) => {
+          plantumlGenerator.out.on("data", (data) => {
+            svgString += data.toString("utf8");
+          });
+
+          plantumlGenerator.out.on("end", () => {
+            node.type = "html";
+            node.value = `<div class="plantuml-diagram">${svgString}</div>`;
+            node.alt = alt;
+            node.meat = undefined;
+            resolve();
+          });
         });
-      });
-      promises.push(promise);
+        promises.push(promise);
+      }
+
+      await Promise.all(promises);
     }
-
-    await Promise.all(promises);
   };
 }
 
