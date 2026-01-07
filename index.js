@@ -17,7 +17,6 @@ function remarkLocalPlantumlPlugin() {
       }
     });
 
-    // Process nodes in batches of 4 to limit parallel processing
     const batchSize = 4;
     for (let i = 0; i < nodes.length; i += batchSize) {
       const batch = nodes.slice(i, i + batchSize);
