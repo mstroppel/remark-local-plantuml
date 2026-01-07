@@ -1,4 +1,4 @@
-import chai from "chai";
+import { assert } from "chai";
 import fs from "fs";
 import path from "path";
 import remark from "remark";
@@ -20,7 +20,7 @@ describe("Plugin", () => {
     const output = result.toString();
     //fs.writeFileSync(path.resolve(__dirname, "./resources/actual.md"), output);
     
-    chai.assert.equal(sanitized(output), sanitized(expected));
+    assert.equal(sanitized(output), sanitized(expected));
   });
 });
 
