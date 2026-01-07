@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "node-plantuml-back": "^1.1.4",
-    "unist-util-visit": "^2.0.2"
+    "unist-util-visit": "^5.0.0"
   },
   "publishConfig": {
     "access": "public"
