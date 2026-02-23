@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import fs from "fs";
 import path from "path";
-import remark from "remark";
+import { remark } from "remark";
 import plugin from "../index.js";
 
 import { fileURLToPath } from 'url';
