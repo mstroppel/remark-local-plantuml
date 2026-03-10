@@ -27,7 +27,7 @@ function remarkLocalPlantumlPlugin() {
         let svgString = "";
         const plantumlGenerator = plantuml.generate(value, { format: "svg" });
 
-        let promise = new Promise((resolve) => {
+        let promise = new Promise((resolve, reject) => {
           plantumlGenerator.out.on("data", (data) => {
             svgString += data.toString("utf8");
           });
@@ -38,6 +38,16 @@ function remarkLocalPlantumlPlugin() {
             node.alt = alt;
             node.meta = undefined;
             resolve();
+          });
+
+          plantumlGenerator.out.on("error", (error) => {
+            console.error("PlantUML generation error:", error);
+            // Fallback to displaying the error in the output
+            node.type = "html";
+            node.value = `<div class="plantuml-diagram"><pre>PlantUML Error: ${error.message}</pre></div>`;
+            node.alt = alt;
+            node.meta = undefined;
+            resolve(); // Still resolve to continue processing other diagrams
           });
         });
         promises.push(promise);
