@@ -27,7 +27,7 @@ function remarkLocalPlantumlPlugin() {
         let svgString = "";
         const plantumlGenerator = plantuml.generate(value, { format: "svg" });
 
-        let promise = new Promise((resolve, reject) => {
+        let promise = new Promise((resolve) => {
           plantumlGenerator.out.on("data", (data) => {
             svgString += data.toString("utf8");
           });
