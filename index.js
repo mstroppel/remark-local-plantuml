@@ -39,6 +39,16 @@ function remarkLocalPlantumlPlugin() {
             node.meta = undefined;
             resolve();
           });
+
+          plantumlGenerator.out.on("error", (error) => {
+            console.error("PlantUML generation error:", error);
+            // Fallback to displaying the error in the output
+            node.type = "html";
+            node.value = `<div class="plantuml-diagram"><pre>PlantUML Error: ${error.message}</pre></div>`;
+            node.alt = alt;
+            node.meta = undefined;
+            resolve(); // Still resolve to continue processing other diagrams
+          });
         });
         promises.push(promise);
       }
