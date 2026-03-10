@@ -36,7 +36,7 @@ function remarkLocalPlantumlPlugin() {
             node.type = "html";
             node.value = `<div class="plantuml-diagram">${svgString}</div>`;
             node.alt = alt;
-            node.meat = undefined;
+            node.meta = undefined;
             resolve();
           });
         });
