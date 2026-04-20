@@ -8,6 +8,10 @@ import plantuml from "node-plantuml-back";
  * https://github.com/unifiedjs/unified#plugin
  */
 function remarkLocalPlantumlPlugin() {
+  if (!process.env.JAVA_TOOL_OPTIONS) {
+    process.env.JAVA_TOOL_OPTIONS = "-Xmx512m";
+  }
+
   return async function transformer(syntaxTree) {
     const nodes = [];
     visit(syntaxTree, "code", (node) => {
