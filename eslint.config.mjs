@@ -25,7 +25,7 @@ export default defineConfig([{
             SharedArrayBuffer: "readonly",
         },
 
-        ecmaVersion: 2018,
+        ecmaVersion: 2022,
         sourceType: "module",
     },
 
